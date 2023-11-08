@@ -1,6 +1,12 @@
 stages:
   prepare:
-    cmd: prepare.split -d src/prepare.py -d data/raw/train.csv -o data/processed/train.csv
-      -o data/processed/test.csv python src/prepare.py data/raw/train.csv
+    cmd: python src/prepare.py data/raw/train.csv
     params:
-    - prepare.seed
+      - prepare.seed
+      - prepare.split
+    deps:
+      - data/raw/train.csv
+      - src/prepare.py
+    outs:
+      - data/processed/test.csv
+      - data/processed/train.csv
