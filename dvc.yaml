@@ -2,11 +2,25 @@ stages:
   prepare:
     cmd: python src/prepare.py data/raw/train.csv
     params:
-      - prepare.seed
-      - prepare.split
+    - prepare.seed
+    - prepare.split
     deps:
-      - data/raw/train.csv
-      - src/prepare.py
+    - data/raw/train.csv
+    - src/prepare.py
     outs:
-      - data/processed/test.csv
-      - data/processed/train.csv
+    - data/processed/test.csv
+    - data/processed/train.csv
+  featurization:
+    cmd: python src/featurization.py data/processed/train.csv data/processed/test.csv
+      data/processed/X_train.csv data/processed/y_train.csv data/processed/X_test.csv
+      data/processed/y_test.csv data/featurized/X_train.csv data/featurized/X_test.csv
+    deps:
+    - data/processed/test.csv
+    - data/processed/train.csv
+    outs:
+    - data/featurized/X_test.csv
+    - data/featurized/X_train.csv
+    - data/processed/X_test.csv
+    - data/processed/X_train.csv
+    - data/processed/y_test.csv
+    - data/processed/y_train.csv
