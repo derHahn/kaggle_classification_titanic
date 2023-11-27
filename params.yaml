@@ -1,3 +1,5 @@
 prepare:
   seed: 42
   split: 0.7
+train:
+  model_type: logreg

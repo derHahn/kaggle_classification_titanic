@@ -24,3 +24,13 @@ stages:
     - data/processed/X_train.csv
     - data/processed/y_test.csv
     - data/processed/y_train.csv
+  train:
+    cmd: python src/train.py data/featurized/X_train.csv data/processed/y_train.csv
+      models/model.joblib
+    deps:
+    - data/featurized/X_train.csv
+    - data/processed/y_train.csv
+    params:
+    - train.model_type
+    outs:
+    - models/model.joblib
