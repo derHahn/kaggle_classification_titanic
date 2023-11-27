@@ -24,3 +24,41 @@ stages:
       hash: md5
       md5: 1e9ef4d918107469f635632d438c3fc5
       size: 43259
+  featurization:
+    cmd: python src/featurization.py data/processed/train.csv data/processed/test.csv
+      data/processed/X_train.csv data/processed/y_train.csv data/processed/X_test.csv
+      data/processed/y_test.csv data/featurized/X_train.csv data/featurized/X_test.csv
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: c99421cb9253ad1244bc4313bc698e2d
+      size: 18823
+    - path: data/processed/train.csv
+      hash: md5
+      md5: 1e9ef4d918107469f635632d438c3fc5
+      size: 43259
+    outs:
+    - path: data/featurized/X_test.csv
+      hash: md5
+      md5: 506c3a87ec7bf7d63e573c4d9ae9a306
+      size: 314900
+    - path: data/featurized/X_train.csv
+      hash: md5
+      md5: 33a144bf91c5be3498810f4e483aacbf
+      size: 732025
+    - path: data/processed/X_test.csv
+      hash: md5
+      md5: d2223e955ac836b58efa5d0fdd23e5ed
+      size: 18278
+    - path: data/processed/X_train.csv
+      hash: md5
+      md5: 0d0596da156a830a74c76719d98dd28f
+      size: 42004
+    - path: data/processed/y_test.csv
+      hash: md5
+      md5: 785dec66190f3d99fd41c52eb04950ef
+      size: 1594
+    - path: data/processed/y_train.csv
+      hash: md5
+      md5: 99eb11ddc09a2c9441db9801ca7f01c7
+      size: 3686
